@@ -26,9 +26,6 @@ std::string    PhoneBook::columnFormat(const std::string &text) const
 // func - 2
 void    PhoneBook::addContact(void)
 {
-    // if (contactCount > 8)
-    //     std::cout << "overwrite a contact\n";
-    //  // more delete and add
    std::string first, last, nick, number, secret;
 
    // first name
@@ -90,6 +87,7 @@ void    PhoneBook::searchContact(void)
         std::cout << "PhoneBook is empty\n";
         return ;
     }
+
     int col = 10;
     int space = 1;
     std::string header = "=========";
@@ -119,12 +117,13 @@ void    PhoneBook::searchContact(void)
                 << std::setw(space) << std::right << "|"
                 << std::setw(col) << std::right << columnFormat(contacts[i].getNickName()) << std::endl;
     }
+    
     // get index
     int index;
     std::cout << "Enter index: ";
     std::cin >> index;
     
-    // print contact's index
+    // index validation check
     if (index < 0 || index >= contactCount || std::cin.fail())
     {
         std::cout << "Invalid index.\n";

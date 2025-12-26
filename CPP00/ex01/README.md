@@ -84,3 +84,41 @@ std::string    PhoneBook::columnFormat(const std::string &text) const
 }
 
 // func - 2  // add contact
+void    PhoneBook::addContact(void)
+{
+    // for each column variable
+       std::string first, last, nick, number, secret;
+       1. display the filed to enter.
+       2. store input in its variable: std::getline(std::cin, column_variable);
+
+    // check if any filed is empty if so display error & return ;.
+    // store contact: using contact class setter functions. 
+    // store contact in PhoneBook. 
+    // increase index in wrapping way:
+        index = (index + 1) %8;
+        the idea here is when its from 0-6 it will add 1 make it equals to index++, but the trick here when now index = 7 + 1 the result = 8 mod 8, it will be 0. The rest of dividing 8/8 is zero no rest in it. Which is mean it return to index = 0. like looping/circyling only around the required range.
+    // check if it exceeds the max size of contacts for phonebook.
+    // if contactCount < 8 // less than max contactCount++.
+    // print contact added.
+}
+
+
+// func - 3 // search contact
+void    PhoneBook::searchContact(void)
+{
+    // Check if is PhoneBook is empty
+    // Print table header
+    // Print Contact table
+    // Get index from user
+    // Check index validation
+        // here print error message then std::cin.clear() to clear its error flag to be used agin.
+        Then use std::cin.ignore(10000, '\n);
+            Skips up to 10,000 characters or until a newline \n is found, whichever comes first. Effectively clears the rest of the line from the input buffer. In other words, “Ignore (throw away) everything the user typed on this line until you reach the Enter key (newline). Stop after 10,000 characters if the user typed a lot.”
+    // clean the cin after taking inputs to avoid \n issue for std::getline(). 
+        std::cin.ignore(10000, '\n'); // it removes the leftover \n (or any extra characters the user typed) from the input buffer.
+        If you later do another std::getline() (common in your program), it will immediately read that leftover \n as an empty line.
+
+This makes your program skip input prompts unexpectedly.
+
+    // Display full contac info filed by filed divided by \n.
+}
