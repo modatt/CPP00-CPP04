@@ -6,17 +6,17 @@ OBJCS = $(SRCS:.cpp=.o)
 NAME = megaphone
 
 $(NAME): $(OBJCS)
-	$(CC) $(CFLAGS) $^ -o $@
+	@$(CC) $(CFLAGS) $^ -o $@
 
 %.o:%.cpp
-	$(CC) $(CFLAGS) -c $< -o $@
+	@$(CC) $(CFLAGS) -c $< -o $@
 all: $(NAME)
 
 clean: 
-	rm -rf $(OBJCS)
+	@rm -rf $(OBJCS)
 
 fclean: clean
-	rm -rf $(NAME)
+	@rm -rf $(NAME)
 
 re: fclean all
 
