@@ -1,0 +1,86 @@
+**Goal**: Write a program that behaves like a phonebook software.
+
+**Requirments** 
+
+- Having 2 classes:
+    1. PhoneBook:
+        - Array of contacts of size of 8.
+        - Max number of contacts for the phonebook is 8, the 9th replaces the oldest contact.
+        - No dynamic allocation is allowed.
+    2. Contact:
+        - Contact information.
+
+**Program Logic**
+
+Having a phonebook software, once you open it it keeps running and waits for your inputs then takes it to implement it, after finishing it return to waiting mode.
+
+<u>Inside an infinite loop:</u>
+1. Waiting mode displaying enter options (ADD, SEARCH, EXIT).
+2. Recieve an option, store it in a string then takes to to be processed.
+    - if (option == "ADD")
+        action: pb.addContact();
+    - if (option == "SEARCH")
+        action: pb.searchContact();
+    - if (option == "EXIT")
+        action: break;
+    - else 
+        action: std::cout << "Invalid Input.\n";
+<u>outside the infinite loop:</u> // optional
+3. Goodbye message.
+    
+**Classes Logic**
+
+- It requires 2 classes:
+    1. <u>PhoneBook</u>: main one that we would need in main to do actions ADD & SEARCH. 
+        since ADD & SEARCH needed outside the class it means they are public functions.
+        In addition to, Contacts[8] to store the contacts we add and search in the array for a contact. 
+        but since Contact is something mustn't be modified since I will ONLY add "not edit" and search "only look" it goes to private data. 
+        helper variales also no need to be used by the user or outside it class, int contactCount to keep tracking the max size allowed of the phonebook contacts which is 8. In addition to, int index which is required from the subject to display in search action and based on it the user chose which contact wants to get its info. 
+
+        In more advance logic, we will need a private/helper function uses inside the phonebook class not needed outside it. columnFormat to help display the table of contacts to seach in it. It ensure that the text does not exceed the required length 10 and if does display it based on the requirments in the subject first 9 + 10th is a dot ".".
+
+        In public class there is a Constructor function and it placed there due to init the variables "int type". Only once at the beginning of the file.
+    2. <u>Contact</u>: secondary/ helper class. It is a class to have the contact info each single one and be added to the contact array in the PhoneBook class. 
+        Logically, I have a PhoneBook it has contacts, to program it I need to have a contact tab has its own info and share variables "categorey/labels" in excel sense, I do them once then I use then in the database where I query/action like add & search. 
+
+        So, the contact class would have in <u>private</u>:
+            needed data of a contact (first, last nick name, phone number,and darkest secret) based on the subject request. 
+        In <u>public</u>:
+            setter & getters functions. Why? becasue the action add means the user will enter inputs I need to set it to contact data for each object/contact it would be created by the user.
+
+            Setter: for and object created in phonebook it uses a setter function to add the value to set(first, last, nick name, phone number, and darkest secret).
+
+            Getter is for action search, whereas, I need to display the contact infos requested by the subject. Thus, get(first, last, nick name, phone number, and darkest secret). They will be follow the format rules for the contact table. 
+
+**Code/ Functions**
+
+
+**Contact**:
+1. Setter: Assign the parameter to to contact variable/data.
+    void    Contact::setXXX(std::string last) // user input
+    {
+        XXXX = xxxx;
+    }
+2. Getter: only return the data/variables.
+    std::string     Contact::getXXXX() const
+    {
+        return XXX;
+    }
+
+
+**PhoneBook**:
+
+Here is the logic of the program.
+// func - 0 // setup - init class variables
+PhoneBook::PhoneBook() : contactCount(0), index(0) {};
+
+// func - 1 // helper function // const >> means read only "can not modify // & means its reference "another name of a variable passed to this function somewhere else" not a copy anything we apply here it applies on it whenever it exist and whatever its name. 
+
+std::string    PhoneBook::columnFormat(const std::string &text) const
+{
+    if (text.length() > 10)
+        return text.substr(0, 9) + ".";
+    return text;
+}
+
+// func - 2  // add contact

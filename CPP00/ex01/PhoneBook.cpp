@@ -26,9 +26,9 @@ std::string    PhoneBook::columnFormat(const std::string &text) const
 // func - 2
 void    PhoneBook::addContact(void)
 {
-    if (contactCount > 8)
-        std::cout << "overwrite a contact\n";
-     // more delete and add
+    // if (contactCount > 8)
+    //     std::cout << "overwrite a contact\n";
+    //  // more delete and add
    std::string first, last, nick, number, secret;
 
    // first name
@@ -72,7 +72,8 @@ void    PhoneBook::addContact(void)
 
     // store contact in PhoneBook
     contacts[index] = cont;
-    index++;
+    // index++;
+    index = (index + 1) %8;
     if (index > 7)
         index = 0;
     if (contactCount < 8)

@@ -43,13 +43,6 @@ class Contact
         std::string getNickName() const;
         std::string getPhoneNumber() const;
         std::string getDarkestSecret() const;
-        // helper functions
-
-
-    //     // constructors & destructors // setup & teardown
-    //     // ~set_firstName();
-    //     // ~get_firstName();
-    //     // controlling access to private data
 
 };
 
